@@ -8,7 +8,6 @@ from constructs import Construct
 
 import utils
 from config import config
-from utils import add_tags
 
 
 class EC2(Stack):
@@ -67,9 +66,9 @@ class EC2(Stack):
 
         if enable_vpc_flow_log:
             vpc_flow_log_role = self.create_vpc_flow_log_role()
-            vpc_flow_log = self.create_vpc_flow_log(vpc=vpc, role=vpc_flow_log_role)
+            self.create_vpc_flow_log(vpc=vpc, role=vpc_flow_log_role)
 
-        add_tags(source=vpc, tag_value=vpc_name, env=config.env, custom_tags=tags)
+        utils.add_tags(source=vpc, tag_value=vpc_name, env=config.env, custom_tags=tags)
         return vpc
 
     def create_vpc_flow_log_role(self) -> iam.Role:
@@ -109,3 +108,23 @@ class EC2(Stack):
 
         utils.add_tags(source=log_group, tag_value=vpc_log_group_name, env=config.env)
         return vpc_flow_log
+
+    def create_security_group(self,
+                              vpc: ec2.Vpc,
+                              security_group_name: str,
+                              description: str,
+                              ingress_rules: list,
+                              egress_rules: list,
+                              tags: list = None) -> ec2.SecurityGroup:
+        security_group = ec2.SecurityGroup(
+            self, security_group_name,
+            vpc=vpc,
+            description=description,
+            allow_all_outbound=True,
+            security_group_name=security_group_name,
+            security_group_ingress=ingress_rules,
+            security_group_egress=egress_rules,
+        )
+
+        utils.add_tags(source=security_group, tag_value=security_group_name, env=config.env, custom_tags=tags)
+        return security_group
