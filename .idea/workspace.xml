@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfb88ba3-ab87-4f8f-bad7-f09b41fb3824" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/docker_run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws-cdkv2-python-examples.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws-cdkv2-python-examples.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/eks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stack/eks_stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/auto-scaling/auto_scaling_group.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/ec2/ec2-instance/ec2_instance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/ec2/ec2-instance/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/ec2/ec2-instance/user_data.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/ec2/volume.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/ec2/vpc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/ec2/vpc_flow_log.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/iam/iam_policy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/iam/iam_role.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_code/iam/iam_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650674377399</updated>
       <workItem from="1650674378582" duration="11956000" />
-      <workItem from="1650698930241" duration="1632000" />
+      <workItem from="1650698930241" duration="6948000" />
     </task>
     <servers />
   </component>
