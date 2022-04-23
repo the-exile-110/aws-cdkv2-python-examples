@@ -6,7 +6,6 @@ from constructs import Construct
 
 import utils
 from config import config
-from utils import add_tags
 
 
 class IAM(Stack):
@@ -15,23 +14,39 @@ class IAM(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
     # Create IAM Role
-
     def create_iam_role(self,
                         role_name: str,
                         role_description: str,
-                        role_path: str,
-                        inline_policies: iam.PolicyDocument,
+                        add_managed_policy_names: list[str],  # list of managed policy names
+                        custom_inline_policy: list[dict],  # [{'Effect': 'Allow', 'Action': '*', 'Resource': '*'}]
                         assumed_by: str,
-                        role_tags: dict) -> iam.Role:
+                        tags: dict) -> iam.Role:
         role = iam.Role(
             self,
             role_name,
             description=role_description,
             role_name=role_name,
-            role_path=role_path,
             assumed_by=iam.ServicePrincipal(assumed_by),
-            inline_policies=inline_policies
         )
 
-        utils.add_tags(source=role, tag_value=role_name, env=config.env, custom_tags=role_tags)
+        for policy_name in add_managed_policy_names:
+            role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name(policy_name))
+
+        """
+        {
+                "Effect": "Allow",
+                "Action": ["ec2:Describe*"],
+                "Resource": ["*"]
+        }
+        """
+        for policy in custom_inline_policy:
+            role.add_to_policy(
+                iam.PolicyStatement(
+                    effect=iam.Effect.ALLOW if policy.get('Effect') == 'Allow' else iam.Effect.DENY,
+                    actions=policy['Action'],
+                    resources=policy['Resource']
+                )
+            )
+
+        utils.add_tags(source=role, tag_value=role_name, env=config.env, custom_tags=tags)
         return role
