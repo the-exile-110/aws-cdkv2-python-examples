@@ -22,6 +22,6 @@ class EksStack(EKS):
                 'arn:aws:iam::123456789012:role/demo-role',
             ],
             user_mapping=[
-                'arn:aws:iam::123456789012:user/demo-user',
+                'arn:aws:iam::123456789012:role/demo-user',
             ]
         )
